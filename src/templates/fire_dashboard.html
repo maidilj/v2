@@ -298,7 +298,7 @@ fetch('/api/fire-data').then(r => r.json()).then(data => {
       margin: { t: 20, r: 140, b: 20, l: 20 },
       annotations: [{
         text: `<b>${year}</b>`,
-        x: 0.38, y: 0.5, showarrow: false,
+        x: 0.5, y: 0.5, xref:'paper', yref:'paper', showarrow: false,
         font: { size: 20, color: '#e2e8f0', family: 'DM Serif Display, Georgia, serif' }
       }],
       showlegend: true,
