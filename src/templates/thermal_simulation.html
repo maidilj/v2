@@ -190,6 +190,7 @@
         joints without bulk heating. Conventional shape-memory polymers apply heat uniformly,
         which is slow, energy-inefficient, and imprecise.
       </p>
+      
       <p>
         The objective was to design and simulate a heat-channel network embedded within
         Multi-Jet Fusion (MJF) 3D-printed polyamide composites that could conduct heat
@@ -197,6 +198,18 @@
         glass transition temperature (Tg ≈ 50–60°C) while keeping the surrounding casing
         safe for skin contact.
       </p>
+
+      <!-- Figure 1: Background -->
+      <div class="figure">
+        <img src="{{ url_for('static', filename='img/background.png') }}"
+             alt="3D-printed composite with embedded heat channels for deformable joint regions"
+             style="max-height: 260px; object-fit: contain; padding: 1rem; background: #fff;">
+        <div class="figure-caption">
+          <strong>Fig. 1</strong> — Potential applications of heat-responsive materials for wearable devices, 
+          fabricated prototypes and the underlying mechanism utilizing embedded heat channels additively 
+          manufuctured with HP's Multi-Jet Fusion (MJF) 3D printing technology.
+        </div>
+
     </div>
 
     <div class="section-block">
@@ -204,18 +217,18 @@
       <p>
         <strong style="color:var(--text)">Geometry &amp; Mesh:</strong> A 2D cross-sectional
         geometry was constructed representing the composite assembly — comprising the heat channel,
-        joint region, and insulating air channels, sized at approximately 40mm × 10mm. The mesh
+        joint region sized at approximately 40mm × 10mm. The mesh
         was built using triangular elements in MATLAB's PDE Toolbox, with refinement concentrated
         at the material interfaces where heat flux gradients are steepest.
       </p>
 
-      <!-- Figure 1: FE Mesh -->
+      <!-- Figure 2: FE Mesh -->
       <div class="figure">
         <img src="{{ url_for('static', filename='img/fe_mesh.png') }}"
              alt="Finite element mesh of heat-channel composite assembly"
              style="max-height: 260px; object-fit: contain; padding: 1rem; background: #fff;">
         <div class="figure-caption">
-          <strong>Fig. 1</strong> — Triangular FE mesh of the composite cross-section.
+          <strong>Fig. 2</strong> — Triangular FE mesh of the composite cross-section.
           Red boundaries demarcate material interfaces between heat channel, joint region, and polyamide casing.
           Mesh nodes: 2,271 · Triangles: 4,336.
         </div>
@@ -243,21 +256,20 @@
       <h2>Results</h2>
       <p>
         The thermal distribution map below shows the steady-state temperature field for the
-        6 wt% carbon composite under conductive heating. The heat front propagates from the
+        varying (10-30 wt%) carbon composite under conductive heating. The heat front propagates from the
         left-side source and attenuates sharply at the air channel boundary — confirming
         the insulation design effectively limits heat leakage to the casing surface.
-        The Tg isotherm (≈40°C shown) is reached approximately 17.5mm from the heat source.
       </p>
 
-      <!-- Figure 2: Thermal distribution -->
+      <!-- Figure 3: Thermal distribution -->
       <div class="figure">
         <img src="{{ url_for('static', filename='img/thermal_distribution.png') }}"
              alt="Thermal distribution map from FE simulation"
              style="max-height: 320px; object-fit: contain; padding: 0.5rem; background: #f0f0f0;">
         <div class="figure-caption">
-          <strong>Fig. 2</strong> — Steady-state thermal distribution (T, °C) with heat flux vector field (q).
-          Red = high temperature zone at heat source; blue = ambient. Tg isotherm reached ~17.5mm from source
-          for 6 wt% carbon composite.
+          <strong>Fig. 3</strong> — Steady-state thermal distribution (T, °C).
+          Red = high temperature zone at heat source; blue = ambient. Heat effectively 
+          propogates into the deformable region in the 20 wt% and 30 wt% designs.
         </div>
       </div>
 
@@ -269,13 +281,13 @@
         leakage as the critical failure mode to engineer against.
       </p>
 
-      <!-- Figure 3: Temperature vs time -->
+      <!-- Figure 4: Temperature vs time -->
       <div class="figure">
         <img src="{{ url_for('static', filename='img/joint_temp_curves.png') }}"
              alt="Joint temperature vs time for varying fusing agent concentrations"
              style="max-height: 320px; object-fit: contain; padding: 1rem; background: #fff;">
         <div class="figure-caption">
-          <strong>Fig. 3</strong> — Joint region temperature vs. time for 10, 20, and 30 wt% fusing agent.
+          <strong>Fig. 4</strong> — Joint region temperature vs. time for 10, 20, and 30 wt% fusing agent.
           Dashed lines mark the glass transition temperature (~50°C) and the time window for actuation.
           30 wt% achieves Tg crossover in ~3 minutes.
         </div>
@@ -285,17 +297,14 @@
     <div class="section-block">
       <h2>Key Findings</h2>
       <p>
-        Higher fusing agent concentration directly accelerates Tg attainment but also increases
+        Higher carbon concentration directly accelerates Tg attainment but also increases
         thermal leakage risk to the skin-contact surface. This identified FA concentration as
         a dual-constraint design variable — requiring optimisation against both actuation speed
         and surface safety simultaneously.
       </p>
       <p>
-        Joule heating via silver nanowire networks proved the faster actuation mechanism,
-        with heat delivered at the speed of electrical conduction rather than diffusion.
-        However, the cross-sectional geometry of the conductor introduced competing effects:
-        reducing cross-section increases local resistance and power dissipation but reduces
-        total current draw — a tradeoff requiring parametric optimisation in future work.
+        This finding provided evidence for the need to switch to an alternative mode of conduction
+        such as electric conduction to achieve the desired actuation speed while ensuring safe surface temperature for usage.
       </p>
       <p>
         These simulation-driven findings directly shaped the composite material specifications
